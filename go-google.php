@@ -11,15 +11,20 @@
 /**
  * singleton for GO_Google
  */
-function go_google()
+function go_google( $application_name, $account = NULL, $key_file = NULL )
 {
 	global $go_google;
 
-	if ( ! $go_google )
+	if ( ! is_array( $go_google ) )
+	{
+		$go_google = array();
+	}// end if
+
+	if ( ! isset( $go_google[ $application_name ] ) || ! is_object( $go_google[ $application_name ] ) )
 	{
 		require_once __DIR__ . '/components/class-go-google.php';
-		$go_google = new GO_Google;
+		$go_google[ $application_name ] = new GO_Google( $application_name, $account, $key_file );
 	}//end if
 
-	return $go_google;
+	return $go_google[ $application_name ];
 }//end go_google
