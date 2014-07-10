@@ -17,8 +17,8 @@ class GO_Google
 		}// end if
 
 		$this->application_name = $application_name;
-		$this->account = $account;
-		$this->key_file = $key_file;
+		$this->application_name = $account;
+		$this->application_name = $key_file;
 
 		// required by the Google library
 		set_include_path( get_include_path() . PATH_SEPARATOR . __DIR__ . '/external' );
